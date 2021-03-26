@@ -13,3 +13,6 @@ from customers
 inner join basket on customers.payment = basket.cost
 ;
 4###########################
+select customers.first_name, customers.last_name, products.cost from customers
+INNER JOIN products ON customers.payment=products.cost
+;
