@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tables</title>
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+<form class="input" action="" method="post">
+
+	<label for="command"><h2 class="padding10">Command</h2></label>
+	<input class="w70" type="text" name="command">
+	<input class="button" type="submit">
+
+</form>
+<div class="top">
+{% for table in data %}
+	<a href="#{{table}}">
+		<h2>
+		{{table}}
+		</h2>
+	</a>
+{% endfor %}
+</div>
+<div class="table-wrapper">
+	{% for table in data %}
+	<h2 id="{{table}}">{{table}}</h2>
+	<table class="fl-table">
+		<thead>
+		<tr>
+			{% for name in data[table][0] %}
+			<th scope="col">{{name}}</th>
+			{% endfor %}
+		</tr>
+		</thead>
+		{% for line in data[table][1] %}
+		<tr>
+			{% for t in line %}
+			<td>
+				{{t}}
+			</td>
+			{% endfor %}
+		</tr>
+		{% endfor %}
+	</table>
+	{% endfor %}
+</div>
+
+</body>
+</html>
